@@ -12,16 +12,24 @@ const Navbar = (props: Props) => {
 	const [isSearch, setIsSearch] = useState(false);
 
 	return (
-		<>
-			<nav className={styles.container}>
+		<div className={styles.container}>
+			<nav className={styles.nav}>
 				<h1 className={styles.title}>fam-Movies</h1>
-        <p className={styles.tagline}>- Complete movie info database -</p>
+				<p className={styles.tagline}>- Complete movie info database -</p>
 				<BsSearch
 					className={styles.searchIcon}
 					onClick={() => {
 						setIsSearch((prevState) => !prevState);
 					}}
 				/>
+				<div className={styles.searchBarDesktop}>
+					<input
+						type="text"
+						className={styles.input}
+						placeholder="Search for a movie..."
+					/>
+					<button className={styles.button}>Search</button>
+				</div>
 			</nav>
 			<div className={isSearch ? styles.searchBar : styles.searchBarHidden}>
 				<input
@@ -31,7 +39,7 @@ const Navbar = (props: Props) => {
 				/>
 				<button className={styles.button}>Search</button>
 			</div>
-		</>
+		</div>
 	);
 };
 

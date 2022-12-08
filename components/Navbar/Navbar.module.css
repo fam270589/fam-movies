@@ -1,69 +1,99 @@
 .container {
-  height: 3rem;
-  background: #1d1d1d;
-  color: #75bf3f;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-inline: 1rem;
+	width: 100%;
+	background: #1d1d1d;
+	color: #75bf3f;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-inline: 1rem;
+
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+}
+
+.nav {
+	height: 3rem;
+	width: 100%;
+	max-width: 1280px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .title {
-  font-weight: 500;
+	font-weight: 500;
 }
 
 .tagline {
-  display: none;
+	display: none;
 }
 
 .searchIcon {
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: #eee;
+	font-size: 1.2rem;
+	cursor: pointer;
+	color: #eee;
 }
 
 .searchBar {
-  background: #171717;
-  border-top: 1px solid gray;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
+	border-top: 1px solid gray;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	padding: 1rem;
 }
 
 .searchBarHidden {
-  display: none;
+	display: none;
+}
+
+.searchBarDesktop {
+	display: none;
 }
 
 .input {
-  width: 100%;
-  background: #333;
-  border: none;
-  border-top-left-radius: 0.3rem;
-  border-bottom-left-radius: 0.3rem;
-  padding-inline: 1rem;
-  color: #eee;
+	width: 100%;
+	background: #333;
+	border: none;
+	border-top-left-radius: 0.3rem;
+	border-bottom-left-radius: 0.3rem;
+	padding-inline: 1rem;
+	color: #eee;
 }
 
 .input:active,
 .input:focus {
-  outline: none;
+	outline: none;
 }
 
 .button {
-  border: none;
-  background: #539b42;
-  color: white;
-  padding: 0.5rem 0.8rem;
-  border-top-right-radius: 0.3rem;
-  border-bottom-right-radius: 0.3rem;
-  cursor: pointer;
-  font-weight: 500;
+	border: none;
+	background: #539b42;
+	color: white;
+	padding: 0.5rem 0.8rem;
+	border-top-right-radius: 0.3rem;
+	border-bottom-right-radius: 0.3rem;
+	cursor: pointer;
+	font-weight: 500;
 }
 
 @media (min-width: 480px) {
-  .tagline {
-    display: flex;
-    color: gray;
-  }
+	.tagline {
+		display: flex;
+		color: gray;
+	}
+}
+
+@media (min-width: 960px) {
+	.searchBarDesktop {
+		display: flex;
+		width: 25rem;
+	}
+	.searchBar {
+		display: none;
+	}
+	.searchIcon {
+		display: none;
+	}
 }
