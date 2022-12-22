@@ -1,19 +1,36 @@
 .container {
-  width: 15rem;
+	width: 12rem;
 	background: rgba(7, 7, 7, 0.8);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-  justify-content: center;
-	padding: 1.5rem;
+	justify-content: center;
+	padding: 1rem;
+	border: 1px solid transparent;
 	border-radius: 1rem;
-	color: gainsboro;
+
+	box-shadow: rgba(100, 255, 100, 0.2) 0px 2px 8px 0px;
+}
+
+.container:hover {
+	border-color: #539b42;
+}
+
+.poster {
+	object-fit: contain;
 }
 
 .data {
-  width: 100%;
+	width: 100%;
+	margin-top: 0.3rem;
 }
 
 .title {
-  font-size: 1.2rem;
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+.year {
+	margin-top: 0.3rem;
+	font-size: 0.9rem;
 }

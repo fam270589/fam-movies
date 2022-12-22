@@ -4,23 +4,27 @@ import styles from "./MovieCard.module.css";
 type Props = {
 	children?: React.ReactNode;
 	// props....
+	id: string;
 	poster: string;
 	title: string;
+	year: string;
 };
 
 //todo:-----MovieCard component-----://
 const MovieCard = (props: Props) => {
 	return (
 		<div className={styles.container}>
-			<Image src={props.poster} width={200} height={300} alt="poster" />
+			<Image
+				priority
+				className={styles.poster}
+				src={props.poster}
+				width={160}
+				height={240}
+				alt="poster"
+			/>
 			<div className={styles.data}>
-				<h1 className={styles.title}>{props.title}</h1>
-        <p>Year</p>
-        <p>Runtime</p>
-        <p>Genre</p>
-        <p>Plot</p>
-        <p>Metascore</p>
-        <p>IMDB Rating</p>
+				<p className={styles.title}>{props.title}</p>
+				<p className={styles.year}>{props.year}</p>
 			</div>
 		</div>
 	);

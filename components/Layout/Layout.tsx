@@ -17,7 +17,10 @@ const Layout = (props: Props) => {
 				alt="background"
 				className={styles.background}
 			/>
-      {props.children}
+			{props.children}
+			<footer className={styles.footer}>
+				<p>*made with: - React, NextJs, Typescript, OMDb API</p>
+			</footer>
 		</div>
 	);
 };

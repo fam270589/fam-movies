@@ -1,26 +1,44 @@
 import { useState, useEffect } from "react";
-import Head from "next/head";
-import Image from "next/image";
-import Navbar from "../components/Navbar/Navbar";
+import Link from "next/link";
 import styles from "../styles/HomePage.module.css";
+import Head from "next/head";
+import Navbar from "../components/Navbar/Navbar";
 import Layout from "../components/Layout/Layout";
 import MovieCard from "../components/Card/MovieCard";
 
 // OMDB Api Key: efdc90b6
 // example: http://www.omdbapi.com/?i=tt3896198&apikey=efdc90b6
 // example: http://www.omdbapi.com/?t=hustle&apikey=efdc90b6
+// example: http://www.omdbapi.com/?s=hustle&apikey=efdc90b6
+
+type Movie = {
+	Title: string;
+	Year: string;
+	imdbID: string;
+	Type: string;
+	Poster: string;
+};
 
 export default function HomePage() {
-	const [title, setTitle] = useState("");
-	const [poster, setposter] = useState("");
+	const [movies, setMovies] = useState<Movie[]>();
+	const [error, setError] = useState("");
 
 	useEffect(() => {
-		fetch("http://www.omdbapi.com/?t=hustle&apikey=efdc90b6")
-			.then((resp) => resp.json())
-			.then((resp) => {
-				setTitle(resp.Title);
-				setposter(resp.Poster);
-			});
+		const fetchMovies = async () => {
+			const response = await fetch(
+				"http://www.omdbapi.com/?s=train&apikey=efdc90b6"
+			);
+			const data = await response.json();
+
+			if (data.Response === "True") {
+				setMovies(data.Search);
+				setError('');
+			} else {
+				setError(data.Error);
+			}
+		};
+
+		fetchMovies();
 
 		return () => {};
 	}, []);
@@ -39,12 +57,24 @@ export default function HomePage() {
 				</header>
 
 				<main className={styles.main}>
-					<MovieCard poster={poster} title={title} />
+					<div className={styles.moviesGrid}>
+						{movies ? (
+							movies.map((movie, idx) => (
+								<Link href={`/${movie.imdbID}`} key={idx}>
+									<MovieCard
+										id={movie.imdbID}
+										poster={movie.Poster}
+										title={movie.Title}
+										year={movie.Year}
+									/>
+								</Link>
+							))
+						) : (
+							<p>Searching...</p>
+						)}
+						{error ? <p>Error: {error}</p> : null}
+					</div>
 				</main>
-
-				<footer className={styles.footer}>
-					<p>*tools: React, NextJs, Typescript</p>
-				</footer>
 			</div>
 		</Layout>
 	);
