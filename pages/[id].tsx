@@ -23,7 +23,7 @@ const MovieDetails = (props: Props) => {
 		const fetchMovieData = async () => {
 			try {
 				const response = await fetch(
-					`http://www.omdbapi.com/?i=${query.id}&apikey=efdc90b6`
+					`https://www.omdbapi.com/?i=${query.id}&apikey=efdc90b6`
 				);
 				const data = await response.json();
 				setMovieData(data);

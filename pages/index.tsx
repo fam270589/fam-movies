@@ -29,7 +29,7 @@ export default function HomePage() {
 	useEffect(() => {
 		const fetchMovies = async () => {
 			const response = await fetch(
-				`http://www.omdbapi.com/?s=${searchQuery}&apikey=efdc90b6`
+				`https://www.omdbapi.com/?s=${searchQuery}&apikey=efdc90b6`
 			);
 			const data = await response.json();
 
