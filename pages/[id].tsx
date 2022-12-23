@@ -45,70 +45,79 @@ const MovieDetails = (props: Props) => {
 	return (
 		<Layout>
 			<div className={styles.container}>
-				<Link href={"/"}>&larr; Back to home</Link>
 				{!movieData && (
-					<div>
-						<h1>Loading...</h1>
+					<div className={styles.loading}>
+						<p>Loading...</p>
 					</div>
 				)}
 				{movieData && (
-					<div className={styles.data}>
-						<Image
-							priority
-							className={styles.poster}
-							src={poster === "N/A" ? "/poster.jpg" : poster}
-							alt={movieData.Title}
-							width={160}
-							height={240}
-						/>
-						<div className={styles.details}>
-							<div className={styles.titleWrapper}>
-								<h1 className={styles.title}>{movieData.Title}</h1>
-								<p>{movieData.Runtime}</p>
+					<>
+						<div className={styles.back}>
+							<Link href={"/"}>&larr; Back to home</Link>
+						</div>
+
+						<div className={styles.data}>
+							<div className={styles.image}>
+								<Image
+									priority
+									className={styles.poster}
+									src={poster === "N/A" ? "/poster.jpg" : poster}
+									alt={movieData.Title}
+									width={160}
+									height={240}
+								/>
 							</div>
-							<div className={styles.detailsWrapper}>
-								<div>
-									<p className={styles.year}>{movieData.Year}</p>
+							<div className={styles.details}>
+								<div className={styles.titleWrapper}>
+									<h1 className={styles.title}>{movieData.Title}</h1>
+									<p className={styles.runtime}>{movieData.Runtime}</p>
 								</div>
-								<div>
-									<p className={styles.plot}>{movieData.Plot}</p>
-								</div>
-								<div>
-									<p className={styles.genre}>
-										<span className={styles.bold}>Genre: </span>
-										{movieData.Genre}
-									</p>
-								</div>
-								<div>
-									<p className={styles.actors}>
-										<span className={styles.bold}>Actors: </span>
-										{movieData.Actors}
-									</p>
-								</div>
-								<div>
-									<p className={styles.director}>
-										<span className={styles.bold}>Director: </span>
-										{movieData.Director}
-									</p>
-								</div>
-								<div>
-									<p className={styles.country}>
-										<span className={styles.bold}>Country: </span>
-										{movieData.Country}
-									</p>
-								</div>
-								<div>
-									<p className={styles.language}>
-										<span className={styles.bold}>Language: </span>
-										{movieData.Language}
-									</p>
-								</div>
-								<div>
-									<p className={styles.rating}>{movieData.imdbRating}</p>
+								<div className={styles.detailsWrapper}>
+									<div>
+										<p className={styles.year}>{movieData.Year}</p>
+									</div>
+									<div>
+										<p className={styles.plot}>{movieData.Plot}</p>
+									</div>
+									<div>
+										<p className={styles.genre}>
+											<span className={styles.bold}>Genre: </span>
+											{movieData.Genre}
+										</p>
+									</div>
+									<div>
+										<p className={styles.actors}>
+											<span className={styles.bold}>Actors: </span>
+											{movieData.Actors}
+										</p>
+									</div>
+									<div>
+										<p className={styles.director}>
+											<span className={styles.bold}>Director: </span>
+											{movieData.Director}
+										</p>
+									</div>
+									<div>
+										<p className={styles.country}>
+											<span className={styles.bold}>Country: </span>
+											{movieData.Country}
+										</p>
+									</div>
+									<div>
+										<p className={styles.language}>
+											<span className={styles.bold}>Language: </span>
+											{movieData.Language}
+										</p>
+									</div>
+									<div>
+										<p className={styles.rating}>
+											<span>&#9733;</span> {movieData.imdbRating}
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					</>
 				)}
 			</div>
 		</Layout>

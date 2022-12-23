@@ -38,6 +38,7 @@ export default function HomePage() {
 				setError("");
 			} else {
 				setError(data.Error);
+				setMovies(undefined);
 			}
 		};
 
@@ -61,7 +62,7 @@ export default function HomePage() {
 
 				<main className={styles.main}>
 					<div className={styles.moviesGrid}>
-						{movies ? (
+						{movies &&
 							movies.map((movie, idx) => (
 								<Link href={`/${movie.imdbID}`} key={idx}>
 									<MovieCard
@@ -71,10 +72,10 @@ export default function HomePage() {
 										year={movie.Year}
 									/>
 								</Link>
-							))
-						) : (
-							<p>Searching...</p>
-						)}
+							))}
+					</div>
+					<div className={styles.searchError}>
+						{!movies && <p>Searching...</p>}
 						{error ? <p>Error: {error}</p> : null}
 					</div>
 				</main>

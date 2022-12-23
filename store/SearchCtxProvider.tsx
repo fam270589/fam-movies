@@ -8,7 +8,7 @@ type Props = {
 
 //todo:-----SearchCtxProvider component-----://
 const SearchCtxProvider = (props: Props) => {
-	const [key, setKey] = useState("");
+	const [key, setKey] = useState("guardians");
 
 	const setSearchKey = (input: string) => {
 		setKey(input);
