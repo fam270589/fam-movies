@@ -25,6 +25,9 @@
 	background: #1d1d1d;
 	margin: 0 2rem;
 	padding: 0.3rem 0.8rem;
+
+	box-shadow: rgba(100, 255, 100, 0.25) 0px 2px 8px;
+
 	border-top-left-radius: 1rem;
 	border-top-right-radius: 1rem;
 }

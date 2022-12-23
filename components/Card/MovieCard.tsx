@@ -12,12 +12,14 @@ type Props = {
 
 //todo:-----MovieCard component-----://
 const MovieCard = (props: Props) => {
+	const poster = props.poster === 'N/A' ? '/poster.jpg' : props.poster;
+
 	return (
 		<div className={styles.container}>
 			<Image
 				priority
 				className={styles.poster}
-				src={props.poster}
+				src={poster}
 				width={160}
 				height={240}
 				alt="poster"

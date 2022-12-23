@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import styles from "../styles/HomePage.module.css";
 import Head from "next/head";
 import Navbar from "../components/Navbar/Navbar";
 import Layout from "../components/Layout/Layout";
 import MovieCard from "../components/Card/MovieCard";
+import SearchKeyContext from "../store/search-ctx";
 
 // OMDB Api Key: efdc90b6
-// example: http://www.omdbapi.com/?i=tt3896198&apikey=efdc90b6
 // example: http://www.omdbapi.com/?t=hustle&apikey=efdc90b6
 // example: http://www.omdbapi.com/?s=hustle&apikey=efdc90b6
 
@@ -23,16 +23,19 @@ export default function HomePage() {
 	const [movies, setMovies] = useState<Movie[]>();
 	const [error, setError] = useState("");
 
+	const searchCtx = useContext(SearchKeyContext);
+	const searchQuery = searchCtx?.searchKey;
+
 	useEffect(() => {
 		const fetchMovies = async () => {
 			const response = await fetch(
-				"http://www.omdbapi.com/?s=train&apikey=efdc90b6"
+				`http://www.omdbapi.com/?s=${searchQuery}&apikey=efdc90b6`
 			);
 			const data = await response.json();
 
 			if (data.Response === "True") {
 				setMovies(data.Search);
-				setError('');
+				setError("");
 			} else {
 				setError(data.Error);
 			}
@@ -41,7 +44,7 @@ export default function HomePage() {
 		fetchMovies();
 
 		return () => {};
-	}, []);
+	}, [searchQuery]);
 
 	return (
 		<Layout>
